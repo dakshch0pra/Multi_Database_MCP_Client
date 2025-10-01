@@ -1,0 +1,24 @@
+{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem@latest",
+        "C:\\testfolder"
+      ]
+    },
+    "custom_tools": {
+      "command": "python",
+      "args": [
+        "C:\\Users\\Richa Chopra\\Desktop\\final\\server.py"
+      ]
+    },
+    "mysql-server": {
+      "command": "C:\\Users\\Richa Chopra\\Desktop\\final\\.venv\\Scripts\\python.exe",
+      "args": [
+        "C:\\Users\\Richa Chopra\\Desktop\\final\\mysql_server.py"
+      ]
+    }
+  }
+}
