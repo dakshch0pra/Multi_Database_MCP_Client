@@ -14,6 +14,12 @@
         "C:\\Users\\Richa Chopra\\Desktop\\final\\server.py"
       ]
     },
+    "postgres-server": {
+      "command": "C:\\Users\\Richa Chopra\\Desktop\\final\\.venv\\Scripts\\python.exe",
+      "args": [
+        "C:\\Users\\Richa Chopra\\Desktop\\final\\postgres_server.py"
+      ]
+    },
     "mysql-server": {
       "command": "C:\\Users\\Richa Chopra\\Desktop\\final\\.venv\\Scripts\\python.exe",
       "args": [
@@ -22,3 +28,4 @@
     }
   }
 }
+
