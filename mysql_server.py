@@ -54,10 +54,8 @@ def database_exists(database_name: str) -> bool:
         cursor = conn.cursor()
         
         # MySQL-specific query
-        cursor.execute(
-            "SELECT 1 FROM information_schema.schemata WHERE schema_name = %s", 
-            (database_name,)
-        )
+        cursor.execute("SHOW DATABASES LIKE %s", (database_name,))
+
         exists = cursor.fetchone() is not None
         cursor.close()
         conn.close()
@@ -68,25 +66,25 @@ def database_exists(database_name: str) -> bool:
 
 
 #Simple Query Tool
-# current_connection = None
-# current_database = None
+current_connection = None
+current_database = None
 
 @mcp.tool(name="query_executor", description="Execute SQL queries on a specified MySQL database and return results in JSON format.")
 def query_data(sql_query: str, database_name: str) -> str:
     """Execute MySQL queries safely with automatic database switching."""
-    # global current_connection, current_database
+    global current_connection, current_database
     
     logger.info(f"Received SQL query: {sql_query} for database: {database_name}")
     
     DB_USER = "root"
     DB_PASS = "pass123"
     DB_HOST = "localhost"
-    DB_PORT = "3306"
+    DB_PORT = 3306
     
     try:
         # Check if we need to switch databases
-        # if current_database != database_name or current_connection is None:
-        #     logger.info(f"Switching from {current_database} to {database_name}")
+        if current_database != database_name or current_connection is None:
+            logger.info(f"Switching from {current_database} to {database_name}")
       
             # Validate database exists
             if not database_exists(database_name):
@@ -104,7 +102,7 @@ def query_data(sql_query: str, database_name: str) -> str:
             
             # Create new connection
             current_connection = pymysql.connect(
-                dbname=database_name,
+                database=database_name,
                 user=DB_USER,
                 password=DB_PASS,
                 host=DB_HOST,
@@ -121,7 +119,7 @@ def query_data(sql_query: str, database_name: str) -> str:
         # Handle results (same as your existing logic)
         query_upper = sql_query.strip().upper()
         
-        if query_upper.startswith(('SELECT', 'WITH')):
+        if query_upper.startswith(('SELECT', 'WITH', 'DESCRIBE', 'SHOW', 'EXPLAIN')):
             rows = cursor.fetchall()
             colnames = [desc[0] for desc in cursor.description] if cursor.description else []
             
@@ -178,11 +176,11 @@ def extract_database_schema(database_name: str) -> str:
     try:
         # Connect to the specified database
         conn = pymysql.connect(
-            dbname=database_name,
+            database=database_name,
             user="root",
             password="pass123",
             host="localhost",
-            port="3306"
+            port= 3306
         )
         cursor = conn.cursor()
         
@@ -192,12 +190,13 @@ def extract_database_schema(database_name: str) -> str:
         schema_info.append("")
         
         # 1. Get all table names
-        cursor.execute("""
+        cursor.execute(f"""
             SELECT table_name 
-            FROM information_schema.tables 
-            WHERE table_schema = 'public' 
-            ORDER BY table_name;
-        """)
+            FROM information_schema.tables
+            WHERE table_schema = '{database_name}'
+            ORDER BY table_name;""")
+
+
         tables = cursor.fetchall()
         
         schema_info.append("TABLE NAMES (Node Types):")
@@ -267,22 +266,33 @@ def extract_database_schema(database_name: str) -> str:
                 schema_info.append("")
             
             # 4. Get foreign key relationships
+            # cursor.execute("""
+            #     SELECT 
+            #         kcu.column_name,
+            #         ccu.table_name AS foreign_table_name,
+            #         ccu.column_name AS foreign_column_name,
+            #         tc.constraint_name
+            #     FROM information_schema.table_constraints AS tc 
+            #     JOIN information_schema.key_column_usage AS kcu
+            #         ON tc.constraint_name = kcu.constraint_name
+            #         AND tc.table_schema = kcu.table_schema
+            #     JOIN information_schema.constraint_column_usage AS ccu
+            #         ON ccu.constraint_name = tc.constraint_name
+            #         AND ccu.table_schema = tc.table_schema
+            #     WHERE tc.constraint_type = 'FOREIGN KEY' 
+            #     AND tc.table_name = %s;
+            # """, (table_name,))
             cursor.execute("""
                 SELECT 
-                    kcu.column_name,
-                    ccu.table_name AS foreign_table_name,
-                    ccu.column_name AS foreign_column_name,
-                    tc.constraint_name
-                FROM information_schema.table_constraints AS tc 
-                JOIN information_schema.key_column_usage AS kcu
-                    ON tc.constraint_name = kcu.constraint_name
-                    AND tc.table_schema = kcu.table_schema
-                JOIN information_schema.constraint_column_usage AS ccu
-                    ON ccu.constraint_name = tc.constraint_name
-                    AND ccu.table_schema = tc.table_schema
-                WHERE tc.constraint_type = 'FOREIGN KEY' 
-                AND tc.table_name = %s;
-            """, (table_name,))
+                    column_name,
+                    referenced_table_name AS foreign_table_name,
+                    referenced_column_name AS foreign_column_name,
+                    constraint_name
+                FROM information_schema.key_column_usage
+                WHERE table_schema = %s 
+                AND table_name = %s
+                AND referenced_table_name IS NOT NULL;
+                """, (database_name, table_name))
             
             foreign_keys = cursor.fetchall()
             if foreign_keys:
@@ -339,4 +349,5 @@ def extract_database_schema(database_name: str) -> str:
 
 if __name__ == "__main__":
     mcp.run(transport='stdio')
+
 
