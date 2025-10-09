@@ -33,7 +33,7 @@ def list_databases() -> str:
     return json.dumps(databases)
 
 #Small list database tool
-@mcp.tool(name="list_databases", description="List all databases present in the MySQL server.")
+@mcp.tool(name="mysql_list_databases", description="List all databases present in the MySQL server.")
 def list_databases_tool() -> str:
     """If the user asks for number of databases present in MySQL server, use this tool."""
     return list_databases()
@@ -69,7 +69,7 @@ def database_exists(database_name: str) -> bool:
 current_connection = None
 current_database = None
 
-@mcp.tool(name="query_executor", description="Execute SQL queries on a specified MySQL database and return results in JSON format.")
+@mcp.tool(name="mysql_query_executor", description="Execute SQL queries on a specified MySQL database and return results in JSON format.")
 def query_data(sql_query: str, database_name: str) -> str:
     """Execute MySQL queries safely with automatic database switching."""
     global current_connection, current_database
@@ -161,7 +161,7 @@ def query_data(sql_query: str, database_name: str) -> str:
             cursor.close()
 
 # # SCHEMA EXTRACTION TOOL
-@mcp.tool(name="schema_extractor", description="Extract and return the schema of the specified mySQL database in a .txt file format.")
+@mcp.tool(name="mysql_schema_extractor", description="Extract and return the schema of the specified mySQL database in a .txt file format.")
 def extract_database_schema(database_name: str) -> str:
     """Extract comprehensive schema information from a mySQL database."""
     
@@ -266,6 +266,22 @@ def extract_database_schema(database_name: str) -> str:
                 schema_info.append("")
             
             # 4. Get foreign key relationships
+            # cursor.execute("""
+            #     SELECT 
+            #         kcu.column_name,
+            #         ccu.table_name AS foreign_table_name,
+            #         ccu.column_name AS foreign_column_name,
+            #         tc.constraint_name
+            #     FROM information_schema.table_constraints AS tc 
+            #     JOIN information_schema.key_column_usage AS kcu
+            #         ON tc.constraint_name = kcu.constraint_name
+            #         AND tc.table_schema = kcu.table_schema
+            #     JOIN information_schema.constraint_column_usage AS ccu
+            #         ON ccu.constraint_name = tc.constraint_name
+            #         AND ccu.table_schema = tc.table_schema
+            #     WHERE tc.constraint_type = 'FOREIGN KEY' 
+            #     AND tc.table_name = %s;
+            # """, (table_name,))
             cursor.execute("""
                 SELECT 
                     column_name,
@@ -333,6 +349,3 @@ def extract_database_schema(database_name: str) -> str:
 
 if __name__ == "__main__":
     mcp.run(transport='stdio')
-
-
-
