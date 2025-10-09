@@ -5,162 +5,6 @@ from mcp.server.fastmcp import FastMCP
 
 mcp = FastMCP("Postgres_Server")
 
-
-# CREATE TABLE WALA CHHOTU
-# @mcp.tool()
-# def create_table(sql_query: str) -> str:
-#     """Execute a PostgreSQL CREATE TABLE query."""
-#     logger.info(f"Received SQL query: {sql_query}")
-
-#     DB_NAME = "postgres"
-#     DB_USER = "postgres"
-#     DB_PASS = "pass123"
-#     DB_HOST = "localhost"
-#     DB_PORT = "5432"
-
-#     # Initialize connection and cursor variables
-#     conn = None
-#     cursor = None
-
-#     try:
-#         # Establish database connection
-#         conn = psycopg2.connect(
-#             dbname=DB_NAME,
-#             user=DB_USER,
-#             password=DB_PASS,
-#             host=DB_HOST,
-#             port=DB_PORT
-#         )
-
-#         # Create a cursor for executing SQL commands
-#         cursor = conn.cursor()
-
-#         # Execute the CREATE TABLE query
-#         cursor.execute(sql_query)
-        
-#         # Commit the transaction for table creation
-#         conn.commit()
-
-#         # Return success message
-#         return json.dumps({"status": "Table created successfully"}, indent=2)
-
-#     except psycopg2.Error as e:
-#         # Log and return error message if query execution fails
-#         logger.error(f"Database error: {str(e)}")
-#         return json.dumps({"error": str(e)}, indent=2)
-
-#     finally:
-#         # Clean up resources
-#         if cursor is not None:
-#             cursor.close()
-#         if conn is not None:
-#             conn.close()
-
-# if __name__ == "__main__":
-#     mcp.run(transport="stdio")
-
-## IMPORTANT OG
-# MAIN WALA
-# @mcp.tool()
-# def query_data(sql_query: str) -> str:
-#     """Execute Postgres SQL queries safely for the user inside the databse specified below and return structures JSON
-#        response."""
-#     logger.info(f"Received SQL query: {sql_query}")
-
-#     DB_NAME = "postgres"
-#     DB_USER = "postgres"
-#     DB_PASS = "pass123"
-#     DB_HOST = "localhost"
-#     DB_PORT = "5432"
-
-#     #---Connection and Execution---#
-#     conn = None  #Connection var init outside try block for proper scope
-#     cursor = None  #Cursor var init outside try block
-
-#     try:
-#         # Establish connection
-#         # print(f"Connecting to database '{DB_NAME}'...")
-#         conn = psycopg2.connect(
-#             dbname=DB_NAME,
-#             user=DB_USER,
-#             password=DB_PASS,
-#             host=DB_HOST,
-#             port=DB_PORT
-#         )
-#         # print("Connection established.")
-
-#         # Create a cursor, cursor object allows to execute SQL commands
-#         cursor = conn.cursor()
-#         # print("Cursor created.")
-
-#         #Execute SQL Query
-#         # print(f"\n Executing query: {sql_query}")
-#         cursor.execute(sql_query)
-        
-#         # Commit the transaction
-#         conn.commit()
-
-#         # Check if the query returns data
-#         query_upper = sql_query.strip().upper()
-        
-#         if query_upper.startswith(('SELECT', 'WITH')):
-#             # Data-returning queries
-#             rows = cursor.fetchall()
-#             # Get column names for better JSON structure
-#             colnames = [desc[0] for desc in cursor.description] if cursor.description else []
-            
-#             # Convert to list of dictionaries for better JSON
-#             if colnames and rows:
-#                 result = [dict(zip(colnames, row)) for row in rows]
-#             else:
-#                 result = rows
-            
-#             return json.dumps({
-#                 "status": "success",
-#                 "data": result,
-#                 "sql_query": sql_query,
-#                 "row_count": len(rows) if rows else 0
-#             }, indent=2, default=str)
-            
-#         else:
-#             # DDL/DML queries (CREATE, INSERT, UPDATE, DELETE, etc.)
-#             affected_rows = cursor.rowcount if cursor.rowcount >= 0 else None
-            
-#             return json.dumps({
-#                 "status": "success", 
-#                 "message": f"Query executed successfully.",
-#                 "sql_query": sql_query,
-#                 "affected_rows": affected_rows,
-#                 "query_type": "DDL/DML"
-#             }, indent=2)
-            
-#     except Exception as e:
-#         return json.dumps({
-#             "status": "error",
-#             "error": str(e),
-#             "query": sql_query
-#         }, indent=2)
-        
-#         #Fetch the results
-#         #Fetchall gives us all rows returned by the query
-#         #Simple line: rows = cursor.fetchall()
-#     finally:
-#         #Close Cursor and connection
-#         #Lets us release resourcers even if errors occur
-#         if cursor is not None:
-#             cursor.close()
-#             # print("Cursor closed.")
-#         if conn is not None:
-#             conn.close()
-#             # print("DB Connection closed.")
-
-#     # print("\n Script finished")
-#     # return json.dumps(rows, indent=2)
-
-# if __name__ == "__main__":
-#     # print("Starting Postgres Server...")
-#     mcp.run(transport="stdio")
-
 #List Database Function
 def list_databases() -> str:
     """List all databases present in the PostgreSQL server."""
@@ -187,101 +31,10 @@ def list_databases() -> str:
     return json.dumps(databases)
 
 #Small list database tool
-@mcp.tool(name="list_databases", description="List all databases present in the PostgreSQL server.")
+@mcp.tool(name="postgres_list_databases", description="List all databases present in the PostgreSQL server.")
 def list_databases_tool() -> str:
     """If the user asks for number of databases present in PostgreSQL server, use this tool."""
     return list_databases()
-
-
-# # TOO MANY DBS CONNECTION TRIAL IN MAIN WALA TOOL
-# @mcp.tool(name ="query_executor", description="Execute SQL queries on a specified PostgreSQL database and return results in JSON format.")
-# def query_data(sql_query: str, database_name: str) -> str:
-#     """Execute Postgres SQL queries safely for the user inside the specified database and return structured JSON response."""
-#     logger.info(f"Received SQL query: {sql_query} for database: {database_name}")
-
-#     DB_NAME = database_name
-#     DB_USER = "postgres"
-#     DB_PASS = "pass123"
-#     DB_HOST = "localhost"
-#     DB_PORT = "5432"
-
-#     #---Connection and Execution---#
-#     conn = None  #Connection var init outside try block for proper scope
-#     cursor = None  #Cursor var init outside try block
-
-#     try:
-#         # Establish connection to the specified database
-#         conn = psycopg2.connect(
-#             dbname=DB_NAME,  # ← Now uses the parameter
-#             user=DB_USER,
-#             password=DB_PASS,
-#             host=DB_HOST,
-#             port=DB_PORT
-#         )
-
-#         # Create a cursor, cursor object allows to execute SQL commands
-#         cursor = conn.cursor()
-
-#         #Execute SQL Query
-#         cursor.execute(sql_query)
-        
-#         # Commit the transaction
-#         conn.commit()
-
-#         # Check if the query returns data
-#         query_upper = sql_query.strip().upper()
-        
-#         if query_upper.startswith(('SELECT', 'WITH')):
-#             # Data-returning queries
-#             rows = cursor.fetchall()
-#             # Get column names for better JSON structure
-#             colnames = [desc[0] for desc in cursor.description] if cursor.description else []
-            
-#             # Convert to list of dictionaries for better JSON
-#             if colnames and rows:
-#                 result = [dict(zip(colnames, row)) for row in rows]
-#             else:
-#                 result = rows
-            
-#             return json.dumps({
-#                 "status": "success",
-#                 "database": DB_NAME,  # ← Added database info
-#                 "data": result,
-#                 "sql_query": sql_query,
-#                 "row_count": len(rows) if rows else 0
-#             }, indent=2, default=str)
-            
-#         else:
-#             # DDL/DML queries (CREATE, INSERT, UPDATE, DELETE, etc.)
-#             affected_rows = cursor.rowcount if cursor.rowcount >= 0 else None
-            
-#             return json.dumps({
-#                 "status": "success", 
-#                 "database": DB_NAME,  # ← Added database info
-#                 "message": f"Query executed successfully.",
-#                 "sql_query": sql_query,
-#                 "affected_rows": affected_rows,
-#                 "query_type": "DDL/DML"
-#             }, indent=2)
-            
-#     except Exception as e:
-#         return json.dumps({
-#             "status": "error",
-#             "database": database_name,  # ← Added database info for errors too
-#             "error": str(e),
-#             "query": sql_query
-#         }, indent=2)
-        
-#     finally:
-#         #Close Cursor and connection
-#         if cursor is not None:
-#             cursor.close()
-#         if conn is not None:
-#             conn.close()
-
-# if __name__ == "__main__":
-#     # print("Starting Postgres Server...")
-#     mcp.run(transport="stdio")
 
 # MAIN WALA TOOL WITH SWITCHING AND JUMPING
 
@@ -315,7 +68,7 @@ from typing import Optional
 current_connection = None
 current_database = None
 
-@mcp.tool(name="query_executor", description="Execute SQL queries on a specified PostgreSQL database and return results in JSON format.")
+@mcp.tool(name="postgres_query_executor", description="Execute SQL queries on a specified PostgreSQL database and return results in JSON format.")
 def query_data(sql_query: str, database_name: str) -> str:
     """Execute Postgres SQL queries safely with automatic database switching."""
     global current_connection, current_database
@@ -412,7 +165,7 @@ def query_data(sql_query: str, database_name: str) -> str:
 
 
 # # SCHEMA EXTRACTION TOOL
-@mcp.tool(name="schema_extractor", description="Extract and return the schema of the specified PostgreSQL database in a .txt file format.")
+@mcp.tool(name="postgres_schema_extractor", description="Extract and return the schema of the specified PostgreSQL database in a .txt file format.")
 def extract_database_schema(database_name: str) -> str:
     """Extract comprehensive schema information from a PostgreSQL database."""
     
@@ -586,60 +339,6 @@ def extract_database_schema(database_name: str) -> str:
             "error": str(e)
         }, indent=2)
 
-
-
-
-
 if __name__ == "__main__":
     # print("Starting Postgres Server...")
     mcp.run(transport="stdio")
-
-
-# import psycopg2
-# import json
-# import sys
-# from loguru import logger
-# from mcp.server.fastmcp import FastMCP
-
-# mcp = FastMCP("Postgres_Server")
-
-# @mcp.tool()
-# def query_data(sql_query: str) -> str:
-#     """Execute Postgres SQL queries safely and return JSON response."""
-#     logger.info(f"Received SQL query: {sql_query}")
-
-#     DB_NAME = "postgres"
-#     DB_USER = "postgres"
-#     DB_PASS = "pass123"
-#     DB_HOST = "localhost"
-#     DB_PORT = "5432"
-
-#     conn, cursor = None, None
-#     try:
-#         conn = psycopg2.connect(
-#             dbname=DB_NAME,
-#             user=DB_USER,
-#             password=DB_PASS,
-#             host=DB_HOST,
-#             port=DB_PORT
-#         )
-#         cursor = conn.cursor()
-#         cursor.execute(sql_query)
-
-#         rows = []
-#         if cursor.description:  # Only SELECT queries have results
-#             rows = cursor.fetchall()
-
-#         return json.dumps(rows, indent=2)
-
-#     except Exception as e:
-#         return json.dumps({"error": str(e)})
-#     finally:
-#         if cursor:
-#             cursor.close()
-#         if conn:
-#             conn.close()
-
-# if __name__ == "__main__":
-#     logger.info("Starting Postgres MCP Server...")
-#     mcp.run(transport="stdio")
