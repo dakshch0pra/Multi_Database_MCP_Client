@@ -126,3 +126,7 @@ This project implements an **MCP (Model Context Protocol) Client** that connects
 
 **Use Cases:** Multi-DB connectivity, real-time operations, enterprise data management
 
+
+## WORKFLOW
+
+**Flow:** User Input → React Agent (Request Handler) → MCP Server Selection → Tool Execution → Response Processing → User Output
