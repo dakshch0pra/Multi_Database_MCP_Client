@@ -77,7 +77,7 @@ This project implements an **MCP (Model Context Protocol) Client** that connects
 
 ## Tools per Server
 
-### 📁 **Filesystem Server** `14 tools`
+### 📁 **Filesystem Server (pre-installed npx server)** `14 tools`
 > **Complete file and directory management**
 
 **Tools:**
