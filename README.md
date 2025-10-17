@@ -69,9 +69,60 @@ This project implements an **MCP (Model Context Protocol) Client** that connects
 | **Programming Language** | Python 3.8+ |
 | **Protocol** | Model Context Protocol (MCP) |
 | **Databases** | MySQL 8.0+, PostgreSQL 12+ |
-| **Async Framework** | asyncio, aiomysql, aiopg |
+| **Frameworks** | pymysql, psycopg2 |
 | **AI Integration** | LangChain, Google Gemini API |
 | **Document Processing** | python-docx |
 | **Key Dependencies** | FastMCP, psycopg2, pymysql, loguru |
 
+
+## Tools per Server
+
+### 📁 **Filesystem Server** `14 tools`
+> **Complete file and directory management**
+
+**Tools:**
+- 📖 File Operations: `read_file`, `write_file`, `edit_file`
+- 🎯 Multi-File Support: `read_multiple_files`, `read_text_file`, `read_media_file`
+- 📂 Directory Management: `create_directory`, `move_file`, `list_directory`
+- 🔍 Advanced Features: `search_files`, `get_file_info`, `directory_tree`
+
+**Use Cases:** File automation, document workflows, script-based access control
+
+---
+
+### 📝 **Custom Tools Server** `5 tools`
+> **Specialized document processing capabilities**
+
+**Core Capabilities:**
+- 📄 Document Creation: `create_docx`
+- 👁️ Document Reading: `read_docx`
+- ✏️ Document Editing: `edit_docx`
+- 🗑️ File Management: `delete_file`
+- 📊 Metadata Extraction: `Extract_Document_Metadata`
+
+**Use Cases:** Automated documentation, reporting workflows, Office integration
+
+---
+
+### 🗄️ **MySQL Server** `3 tools`
+> **Production-ready MySQL database integration**
+
+**Core Capabilities:**
+- 📋 Database Discovery: `mysql_list_databases`
+- ⚡ Query Execution: `mysql_query_executor`
+- 🏗️ Schema Analysis: `mysql_schema_extractor`
+
+**Use Cases:** Backend automation, data pipelines, database agents
+
+---
+
+### 🐘 **PostgreSQL Server** `3 tools`
+> **Enterprise PostgreSQL database management**
+
+**Core Capabilities:**
+- 🔍 Database Exploration: `postgres_list_databases`
+- 💻 Query Processing: `postgres_query_executor`
+- 📐 Schema Extraction: `postgres_schema_extractor`
+
+**Use Cases:** Multi-DB connectivity, real-time operations, enterprise data management
 
