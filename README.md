@@ -1,8 +1,11 @@
 # Multi_Database_MCP_Client
 A modular MCP client project connected to multiple SQL database servers (MySQL, PostgreSQL, etc.) with seamless database switching and query execution.
 
+
 ## Overview
+
 This project implements an **MCP (Model Context Protocol) Client** that connects to multiple servers—**Filesystem, Custom Tools, MySQL, and PostgreSQL**—to execute certain tasks programmatically. The setup enables **dynamic database switching, query execution,** and **communication** through the MCP protocol. It enables seamless interaction with databases and file systems using a unified **tool-based architecture**. It is built to showcase **scalable back-end interaction** using **client-server architecture**. The setup is modular, extensible, and ideal for automation, backend logic, or intelligent agent workflows.
+
 
 ## Key Features
 
@@ -57,3 +60,18 @@ This project implements an **MCP (Model Context Protocol) Client** that connects
 **Intelligent Routing** – Automatically selects appropriate tools based on user requests.
 
 **Multi-Modal Operations** – Combine database queries, file operations, and document processing in a single workflow.
+
+
+## Tech Stack
+
+| Category | Technologies |
+|----------|-------------|
+| **Programming Language** | Python 3.8+ |
+| **Protocol** | Model Context Protocol (MCP) |
+| **Databases** | MySQL 8.0+, PostgreSQL 12+ |
+| **Async Framework** | asyncio, aiomysql, aiopg |
+| **AI Integration** | LangChain, Google Gemini API |
+| **Document Processing** | python-docx |
+| **Key Dependencies** | FastMCP, psycopg2, pymysql, loguru |
+
+
