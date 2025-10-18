@@ -12,11 +12,8 @@ This project implements an **MCP (Model Context Protocol) Client** that connects
 ### Database Operations
 
 - **MySQL Integration** – Complete database management including listing databases, executing queries, and schema extraction.
-
 - **PostgreSQL Support** – Full PostgreSQL connectivity with query execution, transaction handling, and schema analysis.
-
 - **Multi-Database Queries** – Execute operations seamlessly across MySQL and PostgreSQL.
-
 - **Schema Extraction** – Comprehensive database structure analysis and documentation.
 
 ### File System Management
