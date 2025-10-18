@@ -116,4 +116,17 @@ This project implements an **MCP (Model Context Protocol) Client** that connects
 **Flow:** User Input → React Agent (Request Handler) → MCP Server Selection → Tool Execution → Response Processing → User Output
 
 
-## 
+## Folder Structure
+
+project-root/
+│
+├── client/
+│   ├── mcp_client.py
+│   ├── config.json
+│
+├── servers/
+│   ├── mysql_server.py
+│   ├── postgres_server.py
+│
+├── requirements.txt
+└── README.md
