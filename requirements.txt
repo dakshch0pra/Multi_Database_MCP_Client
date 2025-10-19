@@ -1,0 +1,24 @@
+# MCP (Model Context Protocol) 
+mcp>=0.9.0
+
+# LangChain Core and Extensions
+langchain>=0.1.0
+langchain-core>=0.1.0
+langgraph>=0.0.20
+langchain-mcp-adapters>=0.1.0
+
+# LLM Provider (Google Gemini)
+langchain-google-genai>=1.0.0
+
+# Database Drivers
+pymysql>=1.1.0
+psycopg2-binary>=2.9.9
+
+# Logging
+loguru>=0.7.0
+
+# Environment Variables
+python-dotenv>=1.0.0
+
+# FastMCP Server Framework (in dire cases)
+fastmcp>=0.1.0
