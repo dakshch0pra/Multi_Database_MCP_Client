@@ -159,3 +159,6 @@ venv\Scripts\activate      # Windows
 # Install dependencies
 pip install -r requirements.txt
 ```
+
+# Usage Snapshots
+<img width="989" height="605" alt="image" src="https://github.com/user-attachments/assets/020e2277-1ca5-4b7f-be39-c2a169fd5696" />
