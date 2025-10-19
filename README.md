@@ -221,4 +221,10 @@ FOREIGN KEY (dept_id) REFERENCES department(dept_id)\n        );\n        ```\n\
 Extracted Schema saved in file: Full_Schema.txt.
 
 
+# Planned Improvements
+- Integrating additional databases, such as MongoDb.
+- Making it more user-friendly
+- Expanding the system’s context-handling capacity to manage more complex queries
+- Optimizing performance and response time for faster data retrieval and processing.
+
 
