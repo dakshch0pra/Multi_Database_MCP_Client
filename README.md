@@ -118,13 +118,17 @@ This project implements an **MCP (Model Context Protocol) Client** that connects
 
 ## Project Structure
 
-project_root/
-├── MCP_Client/
-│   ├── app_langchain.py
-│   └── mcp_config.json
-├── Servers/
-│   ├── custom_tools_server.py
+```
+project-root/
+│
+├── client/
+│   ├── mcp_client.py
+│   ├── config.json
+│
+├── servers/
 │   ├── mysql_server.py
-│   └── postgres_server.py
-├── README.md
-└── requirements.txt
+│   ├── postgres_server.py
+│
+├── requirements.txt
+└── README.md
+```
