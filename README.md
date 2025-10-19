@@ -218,7 +218,7 @@ FOREIGN KEY (dept_id) REFERENCES department(dept_id)\n        );\n        ```\n\
   ]
 }
 ```
-Extracted Schema saved in file: Full_Sceham.txt.
+Extracted Schema saved in file: Full_Schema.txt.
 
 
 
