@@ -122,8 +122,8 @@ This project implements an **MCP (Model Context Protocol) Client** that connects
 Multi_Database_MCP_Client/
 │
 ├── MCP_Client/
-│   ├── mcp_client.py
-│   ├── config.json
+│   ├── app_langchain.py
+│   ├── mcp_config.json
 │
 ├── Servers/
 │   ├── custom_tools_server.py
