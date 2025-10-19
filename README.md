@@ -119,7 +119,7 @@ This project implements an **MCP (Model Context Protocol) Client** that connects
 ## Project Structure
 
 ```
-project-root/
+Multi_Database_MCP_Client/
 │
 ├── MCP_Client/
 │   ├── mcp_client.py
@@ -146,10 +146,10 @@ project-root/
 ### Steps:
 ```
 # Clone the repository
-git clone [<repository-link>](https://github.com/dakshch0pra/Multi_Database_MCP_Client)
+git clone https://github.com/dakshch0pra/Multi_Database_MCP_Client
 
 # Navigate into the project
-cd project-folder
+cd Multi_Database_MCP_Client
 
 # Optional: Create and activate a virtual environment
 python -m venv venv
