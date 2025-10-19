@@ -135,4 +135,27 @@ project-root/
 ```
 
 
-##
+## Installation & Setup Instructions
+### Prerequisites:
+- Python version 3.8
+- mysql version 8+
+- postgresql version 18+
+- mysql, Postgresql server credentials
+- MCP libraries installed (essentially FastMCP)
+
+### Steps:
+```
+# Clone the repository
+git clone [<repository-link>](https://github.com/dakshch0pra/Multi_Database_MCP_Client)
+
+# Navigate into the project
+cd project-folder
+
+# Optional: Create and activate a virtual environment
+python -m venv venv
+source venv/bin/activate   # Mac/Linux
+venv\Scripts\activate      # Windows
+
+# Install dependencies
+pip install -r requirements.txt
+```
