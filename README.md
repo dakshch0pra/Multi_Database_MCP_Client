@@ -121,14 +121,18 @@ This project implements an **MCP (Model Context Protocol) Client** that connects
 ```
 project-root/
 │
-├── client/
+├── MCP_Client/
 │   ├── mcp_client.py
 │   ├── config.json
 │
-├── servers/
+├── Servers/
+│   ├── custom_tools_server.py
 │   ├── mysql_server.py
 │   ├── postgres_server.py
 │
 ├── requirements.txt
 └── README.md
 ```
+
+
+##
