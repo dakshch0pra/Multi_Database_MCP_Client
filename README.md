@@ -130,6 +130,7 @@ Multi_Database_MCP_Client/
 │   ├── mysql_server.py
 │   ├── postgres_server.py
 │
+├── Full_Schema.txt
 ├── requirements.txt
 └── README.md
 ```
