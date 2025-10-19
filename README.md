@@ -162,3 +162,34 @@ pip install -r requirements.txt
 
 # Usage Snapshots
 <img width="989" height="605" alt="image" src="https://github.com/user-attachments/assets/020e2277-1ca5-4b7f-be39-c2a169fd5696" />
+
+## Eg 1: Databases Retrieval
+<img width="1000" height="498" alt="image" src="https://github.com/user-attachments/assets/940c4572-70e0-475d-abc5-942b63244790" />
+
+
+## Eg 2: MySQL DDL Command
+<img width="996" height="327" alt="image" src="https://github.com/user-attachments/assets/ff87d963-7097-428f-af3e-38ebea921afa" />
+The new table is present in mysql workbench:
+<img width="571" height="440" alt="image" src="https://github.com/user-attachments/assets/58089fea-a686-42b8-946f-afeff6a81953" />
+
+In case of a table already existing:
+<img width="992" height="334" alt="image" src="https://github.com/user-attachments/assets/9ef259c0-a0fb-4695-b4c3-df9dff20c39b" />
+
+
+## Eg 3: MySQL DML Command
+<img width="1003" height="461" alt="image" src="https://github.com/user-attachments/assets/4e91e0a4-4bcb-4c8a-8be5-a3f10e9f0dca" />
+The updated table is present in mysql workbench:
+<img width="568" height="482" alt="image" src="https://github.com/user-attachments/assets/ba319944-5e70-46dc-844a-de669d09e5d9" />
+
+
+## Eg 4: PostgreSQL DDL Command
+<img width="1002" height="362" alt="image" src="https://github.com/user-attachments/assets/d37ba9ce-e94c-407a-9136-f52c88d53b65" />
+The new table is present in pgadmin4 is:
+<img width="748" height="494" alt="image" src="https://github.com/user-attachments/assets/ffbf1bee-57ff-424c-8f47-c0eb8efe7d75" />
+
+
+## Eg 5: PostgreSQL DML Command
+<img width="999" height="414" alt="image" src="https://github.com/user-attachments/assets/5f766667-2cb0-424f-b06c-978a413868c9" />
+
+
+
