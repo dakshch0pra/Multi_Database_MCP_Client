@@ -131,8 +131,8 @@ Multi_Database_MCP_Client/
 │   ├── postgres_server.py
 │
 ├── Full_Schema.txt
-├── requirements.txt
-└── README.md
+├── README.md
+└── requirements.txt
 ```
 
 
