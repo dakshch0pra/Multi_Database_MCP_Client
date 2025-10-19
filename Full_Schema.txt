@@ -1,0 +1,598 @@
+DATABASE SCHEMA: college
+==================================================
+
+TABLE NAMES (Node Types):
+------------------------------
+• department
+• payment
+• students
+• students2
+• teacher
+
+TABLE: department
+========================================
+COLUMNS (Attributes/Properties):
+-----------------------------------
+
+PRIMARY KEYS:
+---------------
+• Department_Id
+
+
+TABLE: payment
+========================================
+COLUMNS (Attributes/Properties):
+-----------------------------------
+
+PRIMARY KEYS:
+---------------
+• Customer_id
+• payment_id
+• Customer_id
+• payment_id
+
+
+TABLE: students
+========================================
+COLUMNS (Attributes/Properties):
+-----------------------------------
+
+PRIMARY KEYS:
+---------------
+• roll_no
+• reg_no
+• roll_no
+• reg_no
+
+
+TABLE: students2
+========================================
+COLUMNS (Attributes/Properties):
+-----------------------------------
+
+PRIMARY KEYS:
+---------------
+• Id
+
+
+TABLE: teacher
+========================================
+COLUMNS (Attributes/Properties):
+-----------------------------------
+
+PRIMARY KEYS:
+---------------
+• Id
+
+FOREIGN KEY RELATIONSHIPS (Node Connections):
+---------------------------------------------
+• Dept_Id → department.Department_Id
+
+DATABASE SCHEMA: daksh_here
+==================================================
+
+TABLE NAMES (Node Types):
+------------------------------
+• game
+• good
+• king
+• newtable
+• ring
+• students
+• teacher
+• user
+
+TABLE: game
+========================================
+COLUMNS (Attributes/Properties):
+-----------------------------------
+
+PRIMARY KEYS:
+---------------
+• Id
+
+
+TABLE: good
+========================================
+COLUMNS (Attributes/Properties):
+-----------------------------------
+
+
+TABLE: king
+========================================
+COLUMNS (Attributes/Properties):
+-----------------------------------
+
+PRIMARY KEYS:
+---------------
+• id
+
+FOREIGN KEY RELATIONSHIPS (Node Connections):
+---------------------------------------------
+• Game_Id → game.Id
+
+
+TABLE: newtable
+========================================
+COLUMNS (Attributes/Properties):
+-----------------------------------
+
+
+TABLE: ring
+========================================
+COLUMNS (Attributes/Properties):
+-----------------------------------
+
+PRIMARY KEYS:
+---------------
+• id
+
+
+TABLE: students
+========================================
+COLUMNS (Attributes/Properties):
+-----------------------------------
+
+PRIMARY KEYS:
+---------------
+• roll_no
+• reg_no
+• roll_no
+• reg_no
+
+
+TABLE: teacher
+========================================
+COLUMNS (Attributes/Properties):
+-----------------------------------
+
+PRIMARY KEYS:
+---------------
+• Id
+
+
+TABLE: user
+========================================
+COLUMNS (Attributes/Properties):
+-----------------------------------
+
+PRIMARY KEYS:
+---------------
+• Host
+• User
+
+DATABASE SCHEMA: leetcode
+==================================================
+
+TABLE NAMES (Node Types):
+------------------------------
+• customer
+• q1_products
+• tweets
+• views
+• world
+
+TABLE: customer
+========================================
+COLUMNS (Attributes/Properties):
+-----------------------------------
+
+PRIMARY KEYS:
+---------------
+• id
+• customer_id
+• id
+• customer_id
+
+
+TABLE: q1_products
+========================================
+COLUMNS (Attributes/Properties):
+-----------------------------------
+
+PRIMARY KEYS:
+---------------
+• product_id
+
+
+TABLE: tweets
+========================================
+COLUMNS (Attributes/Properties):
+-----------------------------------
+
+
+TABLE: views
+========================================
+COLUMNS (Attributes/Properties):
+-----------------------------------
+
+
+TABLE: world
+========================================
+COLUMNS (Attributes/Properties):
+-----------------------------------
+
+PRIMARY KEYS:
+---------------
+• name
+
+DATABASE SCHEMA: sakila
+==================================================
+
+TABLE NAMES (Node Types):
+------------------------------
+• actor
+• actor_info
+• address
+• category
+• city
+• country
+• customer
+• customer_list
+• film
+• film_actor
+• film_category
+• film_list
+• film_text
+• inventory
+• language
+• nicer_but_slower_film_list
+• payment
+• rental
+• sales_by_film_category
+• sales_by_store
+• staff
+• staff_list
+• store
+
+TABLE: actor
+========================================
+COLUMNS (Attributes/Properties):
+-----------------------------------
+
+PRIMARY KEYS:
+---------------
+• actor_id
+
+
+TABLE: actor_info
+========================================
+COLUMNS (Attributes/Properties):
+-----------------------------------
+
+
+TABLE: address
+========================================
+COLUMNS (Attributes/Properties):
+-----------------------------------
+
+PRIMARY KEYS:
+---------------
+• address_id
+
+FOREIGN KEY RELATIONSHIPS (Node Connections):
+---------------------------------------------
+• city_id → city.city_id
+
+
+TABLE: category
+========================================
+COLUMNS (Attributes/Properties):
+-----------------------------------
+
+PRIMARY KEYS:
+---------------
+• category_id
+
+
+TABLE: city
+========================================
+COLUMNS (Attributes/Properties):
+-----------------------------------
+
+PRIMARY KEYS:
+---------------
+• city_id
+• ID
+• city_id
+• ID
+
+FOREIGN KEY RELATIONSHIPS (Node Connections):
+---------------------------------------------
+• country_id → country.country_id
+
+
+TABLE: country
+========================================
+COLUMNS (Attributes/Properties):
+-----------------------------------
+
+PRIMARY KEYS:
+---------------
+• country_id
+• Code
+• country_id
+• Code
+
+
+TABLE: customer
+========================================
+COLUMNS (Attributes/Properties):
+-----------------------------------
+
+PRIMARY KEYS:
+---------------
+• id
+• customer_id
+• id
+• customer_id
+
+FOREIGN KEY RELATIONSHIPS (Node Connections):
+---------------------------------------------
+• address_id → address.address_id
+• store_id → store.store_id
+
+
+TABLE: customer_list
+========================================
+COLUMNS (Attributes/Properties):
+-----------------------------------
+
+
+TABLE: film
+========================================
+COLUMNS (Attributes/Properties):
+-----------------------------------
+
+PRIMARY KEYS:
+---------------
+• film_id
+
+FOREIGN KEY RELATIONSHIPS (Node Connections):
+---------------------------------------------
+• language_id → language.language_id
+• original_language_id → language.language_id
+
+
+TABLE: film_actor
+========================================
+COLUMNS (Attributes/Properties):
+-----------------------------------
+
+PRIMARY KEYS:
+---------------
+• actor_id
+• film_id
+
+FOREIGN KEY RELATIONSHIPS (Node Connections):
+---------------------------------------------
+• actor_id → actor.actor_id
+• film_id → film.film_id
+
+
+TABLE: film_category
+========================================
+COLUMNS (Attributes/Properties):
+-----------------------------------
+
+PRIMARY KEYS:
+---------------
+• film_id
+• category_id
+
+FOREIGN KEY RELATIONSHIPS (Node Connections):
+---------------------------------------------
+• category_id → category.category_id
+• film_id → film.film_id
+
+
+TABLE: film_list
+========================================
+COLUMNS (Attributes/Properties):
+-----------------------------------
+
+
+TABLE: film_text
+========================================
+COLUMNS (Attributes/Properties):
+-----------------------------------
+
+PRIMARY KEYS:
+---------------
+• film_id
+
+
+TABLE: inventory
+========================================
+COLUMNS (Attributes/Properties):
+-----------------------------------
+
+PRIMARY KEYS:
+---------------
+• inventory_id
+
+FOREIGN KEY RELATIONSHIPS (Node Connections):
+---------------------------------------------
+• film_id → film.film_id
+• store_id → store.store_id
+
+
+TABLE: language
+========================================
+COLUMNS (Attributes/Properties):
+-----------------------------------
+
+PRIMARY KEYS:
+---------------
+• language_id
+
+
+TABLE: nicer_but_slower_film_list
+========================================
+COLUMNS (Attributes/Properties):
+-----------------------------------
+
+
+TABLE: payment
+========================================
+COLUMNS (Attributes/Properties):
+-----------------------------------
+
+PRIMARY KEYS:
+---------------
+• Customer_id
+• payment_id
+• Customer_id
+• payment_id
+
+FOREIGN KEY RELATIONSHIPS (Node Connections):
+---------------------------------------------
+• customer_id → customer.customer_id
+• rental_id → rental.rental_id
+• staff_id → staff.staff_id
+
+
+TABLE: rental
+========================================
+COLUMNS (Attributes/Properties):
+-----------------------------------
+
+PRIMARY KEYS:
+---------------
+• rental_id
+
+FOREIGN KEY RELATIONSHIPS (Node Connections):
+---------------------------------------------
+• customer_id → customer.customer_id
+• inventory_id → inventory.inventory_id
+• staff_id → staff.staff_id
+
+
+TABLE: sales_by_film_category
+========================================
+COLUMNS (Attributes/Properties):
+-----------------------------------
+
+
+TABLE: sales_by_store
+========================================
+COLUMNS (Attributes/Properties):
+-----------------------------------
+
+
+TABLE: staff
+========================================
+COLUMNS (Attributes/Properties):
+-----------------------------------
+
+PRIMARY KEYS:
+---------------
+• staff_id
+
+FOREIGN KEY RELATIONSHIPS (Node Connections):
+---------------------------------------------
+• address_id → address.address_id
+• store_id → store.store_id
+
+
+TABLE: staff_list
+========================================
+COLUMNS (Attributes/Properties):
+-----------------------------------
+
+
+TABLE: store
+========================================
+COLUMNS (Attributes/Properties):
+-----------------------------------
+
+PRIMARY KEYS:
+---------------
+• store_id
+
+FOREIGN KEY RELATIONSHIPS (Node Connections):
+---------------------------------------------
+• address_id → address.address_id
+• manager_staff_id → staff.staff_id
+
+DATABASE SCHEMA: postgres
+==================================================
+
+TABLE NAMES (Node Types):
+------------------------------
+• college
+• people
+• shivin
+
+TABLE: college
+========================================
+COLUMNS (Attributes/Properties):
+-----------------------------------
+• student_id: integer NOT NULL
+• name: character varying(255)
+• stream: character varying(255)
+
+PRIMARY KEYS:
+---------------
+• student_id
+
+CHECK CONSTRAINTS:
+--------------------
+• 2200_16415_1_not_null: student_id IS NOT NULL
+
+
+TABLE: people
+========================================
+COLUMNS (Attributes/Properties):
+-----------------------------------
+• number: integer
+• name: character varying
+
+
+TABLE: shivin
+========================================
+COLUMNS (Attributes/Properties):
+-----------------------------------
+• id: integer NOT NULL
+• name: character varying(5)
+
+PRIMARY KEYS:
+---------------
+• id
+
+CHECK CONSTRAINTS:
+--------------------
+• 2200_16410_1_not_null: id IS NOT NULL
+
+DATABASE SCHEMA: books
+==================================================
+
+TABLE NAMES (Node Types):
+------------------------------
+• fantasy
+• mythology
+
+TABLE: fantasy
+========================================
+COLUMNS (Attributes/Properties):
+-----------------------------------
+• book_id: integer
+• name: character varying
+• reviews: integer
+
+CHECK CONSTRAINTS:
+--------------------
+• fantasy_reviews_check: ((reviews >= 0) AND (reviews <= 5))
+
+
+TABLE: mythology
+========================================
+COLUMNS (Attributes/Properties):
+-----------------------------------
+• book_id: integer
+• name: character varying(255)
+• reviews: integer
+
+CHECK CONSTRAINTS:
+--------------------
+• reviews_check: ((reviews >= 0) AND (reviews <= 5))
